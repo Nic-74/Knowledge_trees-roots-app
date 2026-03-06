@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#09090b">
+    <title>Roots — by Knowledge Trees</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ SVG ICON DEFINITIONS ═══ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 2C8 2 5 5.5 5 9c0 2.5 1.5 4.7 3.5 5.8V22h7v-7.2C17.5 13.7 19 11.5 19 9c0-3.5-3-7-7-7z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></symbol>
+    <symbol id="i-broadcast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 010 8.49M7.76 16.24a6 6 0 010-8.49"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 19.07a10 10 0 010-14.14"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-5 2.1A5.5 5.5 0 003 9.5c0 1.8.8 3.4 2 4.5L12 22l7-8a5.5 5.5 0 00-2-9.4A7 7 0 0012 2z"/><path d="M12 2v20"/><path d="M5 9.5h14"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-mesh" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="5" y1="19" x2="19" y2="19"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+    <symbol id="i-thumb" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.2.65.77 1.1 1.45 1.13H21a2 2 0 010 4h-.09c-.68.03-1.25.48-1.45 1.13z"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+    <symbol id="i-family" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 17v5"/><path d="M9 2h6l-1 7h4l-6 8h-1l1-5H7l2-10z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2v11z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+    <symbol id="i-calculator" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><rect x="8" y="6" width="8" height="4" rx="1"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/><circle cx="12" cy="14" r="1"/><circle cx="12" cy="18" r="1"/></symbol>
+    <symbol id="i-wiki" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></symbol>
+    <symbol id="i-dict" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></symbol>
+    <symbol id="i-gov" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><rect x="9" y="13" width="6" height="8"/><line x1="9" y1="9" x2="9" y2="9.01"/><line x1="15" y1="9" x2="15" y2="9.01"/><line x1="12" y1="9" x2="12" y2="9.01"/></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></symbol>
+</svg>
+
+<!-- ═══ BOOT SCREEN ═══ -->
+<div class="boot" id="boot">
+    <div class="boot-mark"><svg><use href="#i-tree"/></svg></div>
+    <div class="boot-lbl" id="bootLbl">INITIALIZING ROOTS</div>
+    <div class="boot-track"><div class="boot-fill" id="bootBar"></div></div>
+</div>
+
+<!-- Toasts -->
+<div class="toasts" id="toasts"></div>
+
+<!-- ═══ BACK BANNER ═══ -->
+<a href="knowledge-trees.html" id="back-banner" style="
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(90deg,#1a3a2a,#2D6A4F);
+  color:#fff;text-decoration:none;
+  padding:9px 18px;font-size:13px;font-weight:600;
+  letter-spacing:.5px;border-bottom:1px solid #2D6A4F;
+  position:sticky;top:0;z-index:200;
+  transition:background .2s;
+" onmouseover="this.style.background='linear-gradient(90deg,#2D6A4F,#40916c)'"
+   onmouseout="this.style.background='linear-gradient(90deg,#1a3a2a,#2D6A4F)'">
+  <span style="font-size:18px;line-height:1">&#8592;</span>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:#74C69D;stroke-width:2;flex-shrink:0"><path d="M12 2C8 2 5 5.5 5 9c0 2.5 1.5 4.7 3.5 5.8V22h7v-7.2C17.5 13.7 19 11.5 19 9c0-3.5-3-7-7-7z"/></svg>
+  <span>Back to <strong>Knowledge Trees</strong> Website</span>
+  <span style="margin-left:auto;font-size:11px;opacity:.7;font-weight:400">nic-74.github.io/milion-dolaar-project/knowledge-trees.html</span>
+</a>
+
+<!-- ═══ HEADER ═══ -->
+<header class="hdr">
+    <a class="hdr-logo" href="knowledge-trees.html" style="text-decoration:none;color:inherit">
+        <div class="hdr-mark"><svg><use href="#i-tree"/></svg></div>
+        <div>
+            <div class="hdr-brand">Roots</div>
+            <div class="hdr-sub" style="color:var(--c-primary);letter-spacing:.8px">by Knowledge Trees</div>
+        </div>
+    </a>
+    <div class="hdr-actions">
+        <a class="hdr-btn" href="knowledge-trees.html" title="Visit Knowledge Trees Website" style="display:flex;align-items:center;justify-content:center">
+            <svg><use href="#i-globe"/></svg>
+        </a>
+        <button class="hdr-btn" onclick="toast('info','Notifications','3 new updates')">
+            <svg><use href="#i-bell"/></svg><span class="hdr-dot"></span>
+        </button>
+        <button class="hdr-btn" onclick="toast('ok','Synced','All data current')">
+            <svg><use href="#i-broadcast"/></svg>
+        </button>
+    </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     HOME SCREEN
+     ══════════════════════════════════════ -->
+<div class="scr on" id="s-home">
+
+    <!-- 45-Minute Session Timer -->
+    <div class="session-bar" id="sessionBar">
+        <div class="session-ring">
+            <svg viewBox="0 0 40 40">
+                <circle class="ring-bg" cx="20" cy="20" r="17"/>
+                <circle class="ring-fill" id="sessionRing" cx="20" cy="20" r="17"
+                    stroke-dasharray="106.81" stroke-dashoffset="0"/>
+            </svg>
+            <div class="ring-text" id="sessionTime">45:00</div>
+        </div>
+        <div class="session-info">
+            <div class="session-label">Session Active</div>
+            <div class="session-sub">45-Minute Rule &mdash; equitable access for all learners</div>
+        </div>
+        <span class="tag tag-g">Active</span>
+    </div>
+
+    <!-- Hero Compact -->
+    <div class="hero-compact">
+        <div class="hero-greeting" id="greeting">Good evening,</div>
+        <div class="hero-name">Lubega Nicholas</div>
+        <div class="hero-level">Knowledge Trees Scholar &middot; Level 12</div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-v">7.4k</div>
+                <div class="hero-stat-l">Total XP</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-v">24</div>
+                <div class="hero-stat-l">Courses</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-v">156h</div>
+                <div class="hero-stat-l">Study Time</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-v">12</div>
+                <div class="hero-stat-l">Day Streak</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Knowledge Tree Node Status -->
+    <div class="node" onclick="openLoc()" style="cursor:pointer">
+        <div class="node-head">
+            <div class="node-row">
+                <div class="node-dot"></div>
+                <span class="node-name">Nansana Knowledge Tree</span>
+            </div>
+            <span class="node-dist">350m</span>
+        </div>
+        <div class="node-grid">
+            <div class="node-cell">
+                <div class="node-cell-v" style="color:var(--c-green)">Online</div>
+                <div class="node-cell-l">Status</div>
+            </div>
+            <div class="node-cell">
+                <div class="node-cell-v">4</div>
+                <div class="node-cell-l">In Queue</div>
+            </div>
+            <div class="node-cell">
+                <div class="node-cell-v">~12m</div>
+                <div class="node-cell-l">Wait</div>
+            </div>
+        </div>
+        <div class="node-q-head">Queue</div>
+        <div class="node-q">
+            <div class="node-qi">
+                <div class="node-qi-pos">1</div>
+                <span class="node-qi-name">Nalubega Sarah</span>
+                <span class="node-qi-eta">syncing</span>
+            </div>
+            <div class="node-qi">
+                <div class="node-qi-pos">2</div>
+                <span class="node-qi-name">Mukasa Brian</span>
+                <span class="node-qi-eta">~4 min</span>
+            </div>
+            <div class="node-qi">
+                <div class="node-qi-pos">3</div>
+                <span class="node-qi-name">Namugga Grace</span>
+                <span class="node-qi-eta">~8 min</span>
+            </div>
+            <div class="node-qi">
+                <div class="node-qi-pos me">4</div>
+                <span class="node-qi-name"><strong>You</strong></span>
+                <span class="node-qi-eta">~12 min</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mesh Sync Banner -->
+    <div class="mesh" onclick="openSnk()" style="cursor:pointer">
+        <svg><use href="#i-mesh"/></svg>
+        <span class="mesh-text">Sneakernet Mesh &mdash; <span class="mesh-count">12 peers</span> nearby &middot; BLE active</span>
+    </div>
+
+    <!-- Quick Access Bar -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px">
+        <div class="crs" style="margin-bottom:0;padding:10px" onclick="go('jobs')">
+            <div class="crs-icon" style="background:var(--c-amber-soft);color:var(--c-amber);width:30px;height:30px;min-width:30px">
+                <svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-briefcase"/></svg>
+            </div>
+            <div class="crs-body"><div class="crs-title" style="font-size:11px">Jobs</div><div class="crs-meta" style="font-size:9px">15 open</div></div>
+        </div>
+        <div class="crs" style="margin-bottom:0;padding:10px" onclick="go('tools')">
+            <div class="crs-icon" style="background:var(--c-blue-soft);color:var(--c-blue);width:30px;height:30px;min-width:30px">
+                <svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-tools"/></svg>
+            </div>
+            <div class="crs-body"><div class="crs-title" style="font-size:11px">Tools</div><div class="crs-meta" style="font-size:9px">4 tools</div></div>
+        </div>
+    </div>
+
+    <!-- KT Mission Card -->
+    <div class="kt">
+        <div class="kt-label"><svg style="width:10px;height:10px;fill:var(--c-primary)"><use href="#i-globe"/></svg> Our Mission</div>
+        <h3>Solar-powered learning hubs bridging education and employment across rural Africa.</h3>
+        <p>Offline-first. 5,000 UGX one-time subscription. Education that travels with you via Sneakernet mesh protocol. Serving 30,000+ residents in Nansana Masitowo, Wakiso District.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="pills" style="margin-bottom:8px">
+        <button class="pill on" onclick="filterH(this,'all')">All</button>
+        <button class="pill" onclick="filterH(this,'stem')">STEM</button>
+        <button class="pill" onclick="filterH(this,'biz')">Business</button>
+        <button class="pill" onclick="filterH(this,'lang')">Languages</button>
+        <button class="pill" onclick="filterH(this,'voc')">Vocational</button>
+    </div>
+
+    <div class="sec"><span class="lbl">Continue Learning</span><span class="sec-more">View all</span></div>
+    <div id="contList"></div>
+
+    <div class="sec"><span class="lbl">Recommended</span><span class="sec-more">View all</span></div>
+    <div id="recList"></div>
+
+    <!-- Content Feed -->
+    <div class="sec"><span class="lbl">Today's Lessons</span><span class="sec-more">View all</span></div>
+    <div id="contentFeed"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     AI TEACHER
+     ══════════════════════════════════════ -->
+<div class="scr" id="s-ai">
+    <div class="ai-top">
+        <div class="ai-orb"><svg><use href="#i-brain"/></svg></div>
+        <h2>Ask your AI Teacher</h2>
+        <p>Pick a subject, ask anything, or upload a photo of a problem. Step-by-step teaching for all levels.</p>
+    </div>
+
+    <div class="sec" style="margin-top:0"><span class="lbl">Subjects</span></div>
+    <div class="subj-grid" id="subjGrid"></div>
+
+    <div class="sec"><span class="lbl" id="exLbl">Example Questions</span></div>
+    <div id="exQs"></div>
+
+    <div class="chat">
+        <div class="chat-bar">
+            <div class="chat-bar-dot"></div>
+            <span class="chat-bar-lbl" id="chatLabel">Mathematics &middot; Online</span>
+        </div>
+        <div class="chat-msgs" id="chatMsgs">
+            <div class="msg bot">
+                <div class="msg-subj">Welcome to Roots</div>
+                Hello, Nicholas! I'm your AI teacher &mdash; built for the Knowledge Trees project.<br><br>
+                I can teach <strong>any subject</strong> at <strong>any level</strong>, from Primary 1 through University. I can also <strong>analyze photos</strong> &mdash; snap a picture of a textbook problem, diagram, or handwritten equation and I'll help you solve it.<br><br>
+                Pick a subject above, tap an example, or just ask me anything.<br><br>
+                <em>Works offline &mdash; questions sync at the nearest Knowledge Tree.</em>
+                <div class="msg-time">Just now</div>
+            </div>
+        </div>
+        <div id="imgPreviewWrap"></div>
+        <div class="chat-input">
+            <div class="chat-img" title="Upload a photo">
+                <svg><use href="#i-camera"/></svg>
+                <input type="file" accept="image/*" onchange="handleImageUpload(this)">
+            </div>
+            <input class="chat-field" id="chatIn" type="text" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendAI()">
+            <button class="chat-go" onclick="sendAI()"><svg><use href="#i-send"/></svg></button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     LEARN / LIBRARY SCREEN
+     ══════════════════════════════════════ -->
+<div class="scr" id="s-learn">
+    <div class="kt">
+        <div class="kt-label"><svg style="width:10px;height:10px;fill:var(--c-primary)"><use href="#i-book"/></svg> Your Progress</div>
+        <h3 style="font-size:16px">3 Active Learning Paths</h3>
+        <p>Aligned with Uganda National Curriculum. P1&ndash;S6, vocational, and university &mdash; all offline-capable.</p>
+        <div style="display:flex;gap:6px;margin-top:10px">
+            <span class="tag tag-o">15 completed</span>
+            <span class="tag tag-b">9 in progress</span>
+        </div>
+    </div>
+
+    <!-- Class Selector + Textbook Library -->
+    <div class="sec"><span class="lbl">Your Textbooks</span></div>
+    <div class="job-skills-bar" style="margin-bottom:10px">
+        <svg style="width:12px;height:12px;stroke:var(--c-text-4);fill:none;stroke-width:2"><use href="#i-search"/></svg>
+        <input class="job-search" id="libSearch" type="text" placeholder="Search library..." oninput="filterLibrary()">
+    </div>
+    <div class="cls-sel" id="classSel">
+        <div class="cls-group">
+            <div class="cls-group-label">Primary</div>
+            <div class="cls-pills" id="clsPrimary"></div>
+        </div>
+        <div class="cls-group">
+            <div class="cls-group-label">Secondary</div>
+            <div class="cls-pills" id="clsSecondary"></div>
+        </div>
+    </div>
+    <div class="cls-count" id="clsCount">8 textbooks for P4</div>
+    <div class="tb-grid" id="tbGrid"></div>
+
+    <!-- Curriculum by Level -->
+    <div class="sec"><span class="lbl">Curriculum</span></div>
+    <div class="lvl-tabs">
+        <div class="lvl-tab on" onclick="setLevel(this,'primary')">Primary</div>
+        <div class="lvl-tab" onclick="setLevel(this,'secondary')">Secondary</div>
+        <div class="lvl-tab" onclick="setLevel(this,'advanced')">Advanced</div>
+        <div class="lvl-tab" onclick="setLevel(this,'university')">University</div>
+    </div>
+    <div id="currList"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     GROUPS
+     ══════════════════════════════════════ -->
+<div class="scr" id="s-groups">
+    <div class="kt">
+        <div class="kt-label"><svg style="width:10px;height:10px;fill:var(--c-primary)"><use href="#i-users"/></svg> Study Groups</div>
+        <h3>Learn better together.</h3>
+        <p>Form groups, discuss topics, ask each other questions &mdash; even without internet via the mesh network.</p>
+    </div>
+
+    <button class="btn btn-p btn-w" style="margin-bottom:12px;padding:12px" onclick="showNewGrp()">
+        <svg style="width:14px;height:14px;stroke:white;fill:none;stroke-width:2"><use href="#i-plus"/></svg>
+        Create New Group
+    </button>
+
+    <div class="pills" style="margin-bottom:12px">
+        <button class="pill on" onclick="filterG(this,'my')">My Groups</button>
+        <button class="pill" onclick="filterG(this,'find')">Discover</button>
+        <button class="pill" onclick="filterG(this,'qa')">Q&amp;A Feed</button>
+    </div>
+    <div id="grpContent"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     JOBS
+     ══════════════════════════════════════ -->
+<div class="scr" id="s-jobs">
+    <div class="kt">
+        <div class="kt-label"><svg style="width:10px;height:10px;fill:var(--c-primary)"><use href="#i-briefcase"/></svg> Opportunity Radar</div>
+        <h3>AI-matched jobs for your skills.</h3>
+        <p>Connected to the Village LinkedIn database. Verified skills, local and remote opportunities in Wakiso District and beyond.</p>
+    </div>
+    <div class="job-stats" id="jobStats"></div>
+    <div class="pills" style="margin-bottom:8px" id="jobPills"></div>
+    <div class="job-skills-bar">
+        <svg style="width:12px;height:12px;stroke:var(--c-text-4);fill:none;stroke-width:2"><use href="#i-search"/></svg>
+        <input class="job-search" id="jobSearch" type="text" placeholder="Filter by skill or title..." oninput="filterJobs()">
+    </div>
+    <div class="job-tracker" id="jobTracker"></div>
+    <div class="sec"><span class="lbl" id="jobResultLabel">All Opportunities</span><span class="sec-more" id="jobResultCount"></span></div>
+    <div id="jobList"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TOOLS
+     ══════════════════════════════════════ -->
+<div class="scr" id="s-tools">
+    <div class="kt">
+        <div class="kt-label"><svg style="width:10px;height:10px;fill:var(--c-primary)"><use href="#i-tools"/></svg> Student Toolkit</div>
+        <h3>Everything you need, offline.</h3>
+        <p>Calculator, encyclopedia, dictionary, and government forms &mdash; all available without internet at any Knowledge Tree node.</p>
+    </div>
+
+    <div class="tools-grid">
+        <div class="tool-card" onclick="openCalc()">
+            <div class="tool-card-icon" style="background:var(--c-primary-soft)">
+                <svg style="width:18px;height:18px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-calculator"/></svg>
+            </div>
+            <div class="tool-card-name">Calculator</div>
+            <div class="tool-card-desc">Scientific &amp; basic. Trig, roots, percentages.</div>
+            <span class="tool-card-badge" style="background:var(--c-green-soft);color:var(--c-green)">Offline</span>
+        </div>
+        <div class="tool-card" onclick="openWiki()">
+            <div class="tool-card-icon" style="background:var(--c-blue-soft)">
+                <svg style="width:18px;height:18px;stroke:var(--c-blue);fill:none;stroke-width:2"><use href="#i-wiki"/></svg>
+            </div>
+            <div class="tool-card-name">Encyclopedia</div>
+            <div class="tool-card-desc">2,000+ articles synced from Knowledge Tree.</div>
+            <span class="tool-card-badge" style="background:var(--c-blue-soft);color:var(--c-blue)">2.1k</span>
+        </div>
+        <div class="tool-card" onclick="openDict()">
+            <div class="tool-card-icon" style="background:var(--c-purple-soft)">
+                <svg style="width:18px;height:18px;stroke:var(--c-purple);fill:none;stroke-width:2"><use href="#i-dict"/></svg>
+            </div>
+            <div class="tool-card-name">Dictionary</div>
+            <div class="tool-card-desc">Definitions, phonetics, examples. Word of the day.</div>
+            <span class="tool-card-badge" style="background:var(--c-purple-soft);color:var(--c-purple)">50k</span>
+        </div>
+        <div class="tool-card" onclick="openGov()">
+            <div class="tool-card-icon" style="background:var(--c-amber-soft)">
+                <svg style="width:18px;height:18px;stroke:var(--c-amber);fill:none;stroke-width:2"><use href="#i-gov"/></svg>
+            </div>
+            <div class="tool-card-name">Gov Forms</div>
+            <div class="tool-card-desc">Uganda government forms &amp; step-by-step guides.</div>
+            <span class="tool-card-badge" style="background:var(--c-amber-soft);color:var(--c-amber)">Uganda</span>
+        </div>
+    </div>
+
+    <div class="sec"><span class="lbl">Quick Use</span></div>
+    <div class="crs" onclick="openCalc()" style="padding:10px">
+        <div class="crs-icon" style="background:var(--c-primary-soft);color:var(--c-primary);width:32px;height:32px">
+            <svg style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-calculator"/></svg>
+        </div>
+        <div class="crs-body">
+            <div class="crs-title">Quick Calculate</div>
+            <div class="crs-meta">Tap to open calculator</div>
+        </div>
+        <svg style="width:12px;height:12px;stroke:var(--c-text-5);fill:none;stroke-width:2"><use href="#i-chevron"/></svg>
+    </div>
+    <div class="crs" onclick="openDict()" style="padding:10px">
+        <div class="crs-icon" style="background:var(--c-purple-soft);color:var(--c-purple);width:32px;height:32px">
+            <svg style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-dict"/></svg>
+        </div>
+        <div class="crs-body">
+            <div class="crs-title">Look Up a Word</div>
+            <div class="crs-meta">Today's word: Ubiquitous</div>
+        </div>
+        <svg style="width:12px;height:12px;stroke:var(--c-text-5);fill:none;stroke-width:2"><use href="#i-chevron"/></svg>
+    </div>
+    <div class="crs" onclick="openGov()" style="padding:10px">
+        <div class="crs-icon" style="background:var(--c-amber-soft);color:var(--c-amber);width:32px;height:32px">
+            <svg style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-gov"/></svg>
+        </div>
+        <div class="crs-body">
+            <div class="crs-title">National ID Application</div>
+            <div class="crs-meta">Most requested form</div>
+        </div>
+        <svg style="width:12px;height:12px;stroke:var(--c-text-5);fill:none;stroke-width:2"><use href="#i-chevron"/></svg>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PROFILE
+     ══════════════════════════════════════ -->
+<div class="scr" id="s-profile">
+    <div class="prof">
+        <div class="prof-av">
+            <div class="prof-ring"></div>
+            <div class="prof-inner">LN</div>
+        </div>
+        <div class="prof-name">Lubega Nicholas</div>
+        <div class="prof-lvl">
+            <svg style="width:10px;height:10px;fill:var(--c-primary)"><use href="#i-zap"/></svg>
+            Level 12 &mdash; Neural Learner
+        </div>
+        <div class="prof-xp">
+            <div class="pbar"><div class="pfill" style="width:74%"></div></div>
+            <div class="prof-xp-row"><span>7,450 XP</span><span>10,000 XP &rarr; Level 13</span></div>
+        </div>
+    </div>
+
+    <div class="sec" style="margin-top:0"><span class="lbl">Achievements</span></div>
+    <div class="ach-grid">
+        <div class="ach got"><div class="ach-i"><svg style="width:20px;height:20px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-tree"/></svg></div><div class="ach-l">First Steps</div></div>
+        <div class="ach got"><div class="ach-i"><svg style="width:20px;height:20px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-zap"/></svg></div><div class="ach-l">7-Day Streak</div></div>
+        <div class="ach got"><div class="ach-i"><svg style="width:20px;height:20px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-brain"/></svg></div><div class="ach-l">Deep Thinker</div></div>
+        <div class="ach got"><div class="ach-i"><svg style="width:20px;height:20px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-users"/></svg></div><div class="ach-l">Team Player</div></div>
+        <div class="ach got"><div class="ach-i"><svg style="width:20px;height:20px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-broadcast"/></svg></div><div class="ach-l">Mesh Carrier</div></div>
+        <div class="ach"><div class="ach-i"><svg style="width:20px;height:20px;stroke:var(--c-text-5);fill:none;stroke-width:2"><use href="#i-award"/></svg></div><div class="ach-l">Instructor</div></div>
+    </div>
+
+    <div class="sec"><span class="lbl">Settings</span></div>
+    <div class="stg">
+        <div class="stg-row" onclick="toast('info','Sneakernet','BLE mesh enabled — 12 peers')">
+            <div class="stg-i"><svg style="width:14px;height:14px;stroke:var(--c-text-3);fill:none;stroke-width:2"><use href="#i-broadcast"/></svg></div>
+            <div class="stg-t"><div class="stg-t-m">Sneakernet Sync</div><div class="stg-t-s">Carry content via BLE mesh</div></div>
+            <div class="stg-a"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-chevron"/></svg></div>
+        </div>
+        <div class="stg-row" onclick="toast('info','Storage','1.2 GB cached')">
+            <div class="stg-i"><svg style="width:14px;height:14px;stroke:var(--c-text-3);fill:none;stroke-width:2"><use href="#i-database"/></svg></div>
+            <div class="stg-t"><div class="stg-t-m">Offline Storage</div><div class="stg-t-s">1.2 GB cached &middot; 3.8 GB free</div></div>
+            <div class="stg-a"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-chevron"/></svg></div>
+        </div>
+        <div class="stg-row">
+            <div class="stg-i"><svg style="width:14px;height:14px;stroke:var(--c-text-3);fill:none;stroke-width:2"><use href="#i-family"/></svg></div>
+            <div class="stg-t"><div class="stg-t-m">Family Profiles</div><div class="stg-t-s">3 of 5 members active</div></div>
+            <div class="stg-a"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-chevron"/></svg></div>
+        </div>
+        <div class="stg-row">
+            <div class="stg-i"><svg style="width:14px;height:14px;stroke:var(--c-text-3);fill:none;stroke-width:2"><use href="#i-mic"/></svg></div>
+            <div class="stg-t"><div class="stg-t-m">Voice Navigation</div><div class="stg-t-s">Luganda &middot; English + 10 more</div></div>
+            <div class="stg-a"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-chevron"/></svg></div>
+        </div>
+        <div class="stg-row">
+            <div class="stg-i"><svg style="width:14px;height:14px;stroke:var(--c-text-3);fill:none;stroke-width:2"><use href="#i-battery"/></svg></div>
+            <div class="stg-t"><div class="stg-t-m">Battery Saver</div><div class="stg-t-s">Optimized &middot; &lt;5% per hour</div></div>
+            <div class="stg-a"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-chevron"/></svg></div>
+        </div>
+        <div class="stg-row">
+            <div class="stg-i"><svg style="width:14px;height:14px;stroke:var(--c-text-3);fill:none;stroke-width:2"><use href="#i-moon"/></svg></div>
+            <div class="stg-t"><div class="stg-t-m">Dark Mode</div><div class="stg-t-s">Always on</div></div>
+            <div class="stg-a"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-chevron"/></svg></div>
+        </div>
+    </div>
+    <div style="text-align:center;padding:16px 0">
+        <p style="font-family:var(--mono);font-size:9px;color:var(--c-text-5);letter-spacing:.5px">ROOTS v5.0 &middot; Knowledge Trees</p>
+        <p style="font-size:10px;color:var(--c-text-5);margin-top:3px">5,000 UGX one-time &middot; Offline-native &middot; Mesh-enabled</p>
+    </div>
+</div>
+
+<!-- ═══ OVERLAYS ═══ -->
+
+<!-- Group Chat Overlay (Enhanced with Tabs) -->
+<div class="gc" id="gcOverlay">
+    <div class="gc-head">
+        <button class="gc-back" onclick="closeGC()"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-arrow-left"/></svg></button>
+        <div>
+            <div class="gc-t" id="gcTitle">Group</div>
+            <div style="font-size:10px;color:var(--c-text-4)" id="gcSub">5 members</div>
+        </div>
+    </div>
+    <div class="gc-tabs">
+        <div class="gc-tab on" onclick="switchGCTab(this,'chat')">Chat</div>
+        <div class="gc-tab" onclick="switchGCTab(this,'resources')">Resources</div>
+        <div class="gc-tab" onclick="switchGCTab(this,'sessions')">Sessions</div>
+        <div class="gc-tab" onclick="switchGCTab(this,'pinned')">Pinned</div>
+    </div>
+    <div class="gc-panel" id="gcPanel">
+        <div class="gc-msgs" id="gcMsgs"></div>
+    </div>
+    <div class="chat-input" id="gcInput">
+        <button class="gc-attach" onclick="toast('info','Attach','Select content to share')">
+            <svg style="width:14px;height:14px;stroke:var(--c-text-4);fill:none;stroke-width:2"><use href="#i-plus"/></svg>
+        </button>
+        <input class="chat-field" id="gcIn" type="text" placeholder="Message..." onkeydown="if(event.key==='Enter')sendGM()">
+        <button class="chat-go" onclick="sendGM()"><svg><use href="#i-send"/></svg></button>
+    </div>
+</div>
+
+<!-- Textbook Reader -->
+<div class="reader" id="readerOverlay">
+    <div class="reader-head">
+        <button class="reader-back" onclick="closeReader()"><svg><use href="#i-arrow-left"/></svg></button>
+        <div class="reader-title" id="readerTitle">Textbook</div>
+    </div>
+    <div class="reader-body" id="readerBody"></div>
+</div>
+
+<!-- Create Group Modal -->
+<div class="modal" id="newGrpModal">
+    <div class="modal-box">
+        <div style="text-align:center;margin-bottom:16px">
+            <svg style="width:32px;height:32px;stroke:var(--c-primary);fill:none;stroke-width:2;margin-bottom:6px"><use href="#i-users"/></svg>
+            <h2 class="serif" style="font-size:18px;font-weight:800;margin-bottom:2px">Create Study Group</h2>
+            <p style="font-size:12px;color:var(--c-text-4)">Invite peers and learn together &mdash; even offline.</p>
+        </div>
+        <input class="inp" style="margin-bottom:6px" placeholder="Group name" id="ngName">
+        <input class="inp" style="margin-bottom:6px" placeholder="Subject (e.g. Mathematics)" id="ngSubj">
+        <input class="inp" style="margin-bottom:14px" placeholder="Description" id="ngDesc">
+        <button class="btn btn-p btn-w" onclick="createGrp()">Create Group</button>
+        <button class="btn btn-s btn-w" style="margin-top:6px" onclick="closeNewGrp()">Cancel</button>
+    </div>
+</div>
+
+<!-- Sneakernet Sharing Overlay -->
+<div class="snk" id="snkOverlay">
+    <div class="snk-head">
+        <button class="snk-back" onclick="closeSnk()">
+            <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-arrow-left"/></svg>
+        </button>
+        <div>
+            <div class="snk-t">Sneakernet Mesh</div>
+            <div class="snk-sub">BLE Active &mdash; <span id="snkPeerCount">12</span> peers nearby</div>
+        </div>
+        <div class="snk-status"><div class="snk-pulse"></div></div>
+    </div>
+    <div class="snk-radar" id="snkRadar">
+        <div class="snk-radar-ring snk-ring-1"></div>
+        <div class="snk-radar-ring snk-ring-2"></div>
+        <div class="snk-radar-ring snk-ring-3"></div>
+        <div class="snk-radar-center">
+            <svg style="width:16px;height:16px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-broadcast"/></svg>
+        </div>
+        <div id="snkPeerDots"></div>
+    </div>
+    <div class="snk-tabs">
+        <div class="snk-tab on" onclick="switchSnkTab(this,'nearby')">Nearby</div>
+        <div class="snk-tab" onclick="switchSnkTab(this,'sharing')">My Shares</div>
+        <div class="snk-tab" onclick="switchSnkTab(this,'transfers')">Transfers</div>
+    </div>
+    <div class="snk-content" id="snkContent"></div>
+</div>
+
+<!-- KT Node Locator Overlay -->
+<div class="loc" id="locOverlay">
+    <div class="loc-head">
+        <button class="loc-back" onclick="closeLoc()">
+            <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-arrow-left"/></svg>
+        </button>
+        <div>
+            <div class="loc-t">Find a Knowledge Tree</div>
+            <div class="loc-sub" id="locSub">3 nodes within 2km</div>
+        </div>
+    </div>
+    <div class="loc-map">
+        <div class="loc-compass">
+            <div class="loc-compass-ring"></div>
+            <div class="loc-compass-needle" id="locNeedle"></div>
+            <div class="loc-compass-center">
+                <svg style="width:16px;height:16px;fill:var(--c-primary)"><use href="#i-tree"/></svg>
+            </div>
+            <div class="loc-compass-dir loc-dir-n">N</div>
+            <div class="loc-compass-dir loc-dir-e">E</div>
+            <div class="loc-compass-dir loc-dir-s">S</div>
+            <div class="loc-compass-dir loc-dir-w">W</div>
+        </div>
+        <div class="loc-arrow">
+            <svg style="width:24px;height:24px;stroke:var(--c-primary);fill:none;stroke-width:2"><use href="#i-chevron"/></svg>
+        </div>
+        <div class="loc-dist" id="locDist">350m NW</div>
+    </div>
+    <div class="sec" style="padding:0 14px"><span class="lbl">Nearby Nodes</span></div>
+    <div class="loc-list" id="locList"></div>
+</div>
+
+<!-- ═══ CALCULATOR OVERLAY ═══ -->
+<div class="calc-overlay" id="calcOverlay">
+    <div class="calc-head">
+        <button class="calc-back" onclick="closeCalc()">
+            <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-arrow-left"/></svg>
+        </button>
+        <div>
+            <div style="font-weight:700;font-size:13px">Calculator</div>
+            <div style="font-size:10px;color:var(--c-text-4)">Scientific &amp; Basic</div>
+        </div>
+    </div>
+    <div class="calc-display" id="calcDisplay">
+        <div class="calc-expr" id="calcExpr"></div>
+        <div class="calc-result" id="calcResult">0</div>
+    </div>
+    <div class="calc-mode-tabs">
+        <div class="calc-mode-tab on" id="calcModeBasic" onclick="setCalcMode('basic')">Basic</div>
+        <div class="calc-mode-tab" id="calcModeScientific" onclick="setCalcMode('scientific')">Scientific</div>
+    </div>
+    <div class="calc-grid" id="calcGrid"></div>
+</div>
+
+<!-- ═══ WIKI OVERLAY ═══ -->
+<div class="wiki-overlay" id="wikiOverlay">
+    <div class="wiki-head">
+        <button class="wiki-back" onclick="closeWiki()">
+            <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-arrow-left"/></svg>
+        </button>
+        <div>
+            <div style="font-weight:700;font-size:13px">Offline Encyclopedia</div>
+            <div style="font-size:10px;color:var(--c-text-4)">2,100+ articles synced</div>
+        </div>
+    </div>
+    <div class="wiki-search-bar">
+        <input class="wiki-search-input" id="wikiSearchInput" type="text" placeholder="Search articles..." onkeydown="if(event.key==='Enter')searchWiki()">
+        <button class="wiki-search-btn" onclick="searchWiki()">
+            <svg style="width:16px;height:16px;stroke:white;fill:none;stroke-width:2"><use href="#i-search"/></svg>
+        </button>
+    </div>
+    <div class="wiki-cats" id="wikiCats"></div>
+    <div class="wiki-body" id="wikiBody"></div>
+</div>
+
+<!-- ═══ DICTIONARY OVERLAY ═══ -->
+<div class="dict-overlay" id="dictOverlay">
+    <div class="dict-head">
+        <button class="dict-back" onclick="closeDict()">
+            <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-arrow-left"/></svg>
+        </button>
+        <div>
+            <div style="font-weight:700;font-size:13px">Dictionary</div>
+            <div style="font-size:10px;color:var(--c-text-4)">50,000+ words offline</div>
+        </div>
+    </div>
+    <div class="dict-search-bar">
+        <input class="dict-search-input" id="dictSearchInput" type="text" placeholder="Search a word..." onkeydown="if(event.key==='Enter')searchDict()">
+        <button class="dict-search-btn" onclick="searchDict()">
+            <svg style="width:16px;height:16px;stroke:white;fill:none;stroke-width:2"><use href="#i-search"/></svg>
+        </button>
+    </div>
+    <div class="dict-body" id="dictBody"></div>
+</div>
+
+<!-- ═══ GOV FORMS OVERLAY ═══ -->
+<div class="gov-overlay" id="govOverlay">
+    <div class="gov-head">
+        <button class="gov-back" onclick="closeGov()">
+            <svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><use href="#i-arrow-left"/></svg>
+        </button>
+        <div>
+            <div style="font-weight:700;font-size:13px">Government Forms</div>
+            <div style="font-size:10px;color:var(--c-text-4)">Uganda &mdash; Step-by-step guides</div>
+        </div>
+    </div>
+    <div class="gov-body" id="govBody">
+        <div class="gov-search-bar">
+            <input class="gov-search-input" id="govSearchInput" type="text" placeholder="Search forms..." oninput="filterGovForms()">
+        </div>
+        <div id="govContent"></div>
+    </div>
+</div>
+
+<!-- ═══ BOTTOM NAV ═══ -->
+<nav class="bnav">
+    <div class="bnav-item on" onclick="go('home',this)">
+        <svg><use href="#i-home"/></svg><span>Home</span>
+    </div>
+    <div class="bnav-item" onclick="go('learn',this)">
+        <svg><use href="#i-book"/></svg><span>Library</span>
+    </div>
+    <div class="bnav-item" onclick="go('ai',this)">
+        <svg><use href="#i-brain"/></svg><span>AI Tutor</span>
+    </div>
+    <div class="bnav-item" onclick="go('tools',this)">
+        <svg><use href="#i-tools"/></svg><span>Tools</span>
+    </div>
+    <div class="bnav-item" onclick="go('groups',this)">
+        <svg><use href="#i-users"/></svg><span>Groups</span>
+    </div>
+    <div class="bnav-item" onclick="go('profile',this)">
+        <svg><use href="#i-user"/></svg><span>Profile</span>
+    </div>
+</nav>
+
+<!-- FAB — Quick AI Access -->
+<div class="fab" onclick="go('ai',document.querySelectorAll('.bnav-item')[2])">
+    <svg><use href="#i-brain"/></svg>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
